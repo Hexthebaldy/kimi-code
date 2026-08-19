@@ -18,7 +18,7 @@ import { IAgentContextInjectorService } from '#/agent/contextInjector/contextInj
 import { IAgentTaskService } from '#/agent/task/task';
 import { IAgentContextMemoryService } from '#/agent/contextMemory/contextMemory';
 import { IAgentTokenCountingService } from '#/agent/tokenCounting/tokenCounting';
-import { makeHookRunner } from '../agent/externalHooks/runner-stub';
+import { makeHookRunner } from '../features/externalHooks/runner-stub';
 import { IAgentProfileService, type ProfileData } from '#/agent/profile/profile';
 import { IAgentPermissionModeService } from '#/agent/permissionMode/permissionMode';
 import { IAgentRuntimeService } from '#/agent/runtimeBinding/agentRuntime';
@@ -1532,6 +1532,7 @@ describe('Agent tool execution contract', () => {
         agent_id: 'agent-child',
         parent_agent_id: 'main',
         parent_tool_call_id: 'call_agent',
+        model: 'provider/secondary',
       },
     });
     expect(events.find((event) => event.type === 'subagent.completed')).toMatchObject({
